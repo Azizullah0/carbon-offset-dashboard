@@ -1,4 +1,4 @@
-# A5 Submission
+## Carbon offset dashboard
 
 ## How to run
 This is a static D3 dashboard. Start a local server in this folder and open the page:

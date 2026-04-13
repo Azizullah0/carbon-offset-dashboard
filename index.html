@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climate Offsets Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Climate Offsets Dashboard</h1>
+      <p>Explore carbon stocks, forest change, and climate risk to find viable offset opportunities. <span id="year-notes"></span></p>
+    </div>
+    <div class="controls">
+      <label>
+        Country search
+        <input id="country-search" type="text" placeholder="Type to highlight…" />
+      </label>
+      <button id="clear-selection">Clear selection</button>
+      <div class="selection-hint">Click map or scatter to toggle up to 5 countries. Brush axes to filter.</div>
+    </div>
+    <div class="chips" id="selection-chips"></div>
+  </header>
+
+  <main class="grid">
+    <section class="card map-card">
+      <div class="card-header">
+        <div>
+          <h2>Carbon Stock Map</h2>
+          <p>Choropleth of forest carbon stocks (million tonnes).</p>
+        </div>
+        <div class="legend" id="map-legend"></div>
+      </div>
+      <svg id="map" aria-label="Carbon stock map"></svg>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>Risk vs Carbon Impact</h2>
+          <p>X: climate hazard (0-10), Y: carbon stock (log scale), size: forest area, color: risk.</p>
+        </div>
+      </div>
+      <svg id="scatter" aria-label="Risk vs Carbon scatter"></svg>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>Parallel Coordinates Filter</h2>
+          <p>Brush ranges to filter countries by multiple criteria. Drag to compare patterns.</p>
+        </div>
+        <div class="legend-row"><span class="pill" id="filter-status">No filters</span></div>
+      </div>
+      <svg id="parallel" aria-label="Parallel coordinates"></svg>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>Emissions Timeline</h2>
+          <p>Total GHG emissions incl. land-use (Mt CO₂e). Shows selected countries.</p>
+        </div>
+        <div class="legend-row timeline-toggle">
+          <span class="pill">Scale</span>
+          <button class="toggle-btn active" data-scale="selected">Selected</button>
+          <button class="toggle-btn" data-scale="global">Global</button>
+        </div>
+      </div>
+      <div class="empty-state" id="timeline-empty">Select up to 5 countries from the map or scatter to populate this view.</div>
+      <svg id="timeline" aria-label="Emissions timeline"></svg>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

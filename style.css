@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #f7f9fb;
+  color: #1f2933;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border-bottom: 1px solid #d8e2ec;
+  background: linear-gradient(135deg, #eef2f7 0%, #f7f9fb 60%, #eef2f7 100%);
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+header h1 {
+  font-size: 22px;
+}
+
+header p {
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  font-size: 12px;
+  color: #4b5563;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input[type="text"] {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #111827;
+  min-width: 200px;
+}
+
+button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #dfe3e8;
+}
+
+.selection-hint {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+  font-size: 12px;
+}
+
+.chip button {
+  border: none;
+  background: transparent;
+  padding: 0 4px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.chip button:hover {
+  color: #111827;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+  height: calc(100vh - 140px);
+  overflow: hidden;
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #d8e2ec;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.card.map-card svg {
+  height: 105%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.card-header p {
+  color: #4b5563;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card svg {
+  flex: 1;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.timeline-toggle {
+  gap: 6px;
+}
+
+.toggle-btn {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #111827;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: #e5f0ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+.pill {
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #eef2f7;
+  color: #1f2933;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.legend .bar {
+  width: 140px;
+  height: 10px;
+  background: linear-gradient(90deg, #f7fcb9, #31a354, #005a32);
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+}
+
+.axis path,
+.axis line {
+  stroke: #d8e2ec;
+  stroke-width: 1;
+}
+
+.axis text {
+  fill: #1f2933;
+  font-size: 13px;
+}
+
+.grid-line {
+  stroke: #e5e7eb;
+  stroke-width: 1;
+}
+
+.country-label {
+  fill: #1f2933;
+  font-size: 11px;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #cbd5e1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  z-index: 10;
+}
+
+.empty-state {
+  font-size: 13px;
+  color: #6b7280;
+  padding: 4px 2px 8px;
+}
+
+.selected {
+  stroke: #f97316 !important;
+  stroke-width: 2 !important;
+}
+
+.faded {
+  opacity: 0.35;
+}
+
+.brush .selection {
+  fill: #10b98133;
+  stroke: #10b981;
+}
+
+.line-default {
+  fill: none;
+  stroke: #2563eb;
+  stroke-width: 2;
+}
+
+.line-muted {
+  opacity: 0.4;
+}
